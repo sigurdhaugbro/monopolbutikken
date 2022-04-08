@@ -9,6 +9,7 @@
 <style>
    .footer {
       height: 270px;
+      width: 100vw;
       display: grid;
       justify-content: center;
       background: var(--primary-color);

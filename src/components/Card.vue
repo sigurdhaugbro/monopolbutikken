@@ -24,8 +24,8 @@
 
    .card {
       border: solid 2px;
-      width: 612px;
-      height: 918px;
+      width: 306px;
+      height: 459px;
       padding: 13px;
       display: grid;
       justify-content: center;
@@ -33,8 +33,8 @@
 
    .card__border {
       border: solid 2px;
-      width: 544px;
-      height: 850px;
+      width: 272px;
+      height: 425px;
       display: grid;
       justify-content: center;
    }

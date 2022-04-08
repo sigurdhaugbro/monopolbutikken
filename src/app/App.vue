@@ -1,6 +1,5 @@
 <template>
 	<Header />
-	<Card />
 	<RouterView />
 	<Footer />
 </template>
