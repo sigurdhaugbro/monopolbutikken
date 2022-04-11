@@ -38,7 +38,7 @@
 						price: 321,
                   color: 'orange',
 					}
-				] 
+            ]
 			}
 		},
 
@@ -51,7 +51,6 @@
    }
 
 </script>
-
 
 <style> 
 
