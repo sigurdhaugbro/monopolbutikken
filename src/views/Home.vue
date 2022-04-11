@@ -25,6 +25,6 @@
    .home__logo {
       font-size: 300px;
       margin-top: 20px;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
    }
 </style>

@@ -1,7 +1,24 @@
 <template>
 	<main class="store">
+		<section v-if="visible" class="store__cart">
+			<div class="cart__product">
+				<Card />
+			</div>
+			<div class="cart__product">
+				<Card />
+			</div>
+			<div class="cart__product">
+				<Card />
+			</div>
+			<div class="cart__total">
+				<div>total:</div>
+				<div>123$</div>
+			</div>
+		</section>
+
 		<section class="store__latest">
-			<div class="products__card">
+			<h1 class="latest__headline">Latest:</h1>
+			<div class="lateset__product">
 				<Card />
 			</div>
 		</section>
@@ -15,19 +32,19 @@
 			<div class="products__card">
 				<Card />
 			</div>
-						<div class="products__card">
+			<div class="products__card">
 				<Card />
 			</div>
-						<div class="products__card">
+			<div class="products__card">
 				<Card />
 			</div>
-						<div class="products__card">
+			<div class="products__card">
 				<Card />
 			</div>
-						<div class="products__card">
+			<div class="products__card">
 				<Card />
 			</div>
-						<div class="products__card">
+			<div class="products__card">
 				<Card />
 			</div>
 			
@@ -41,7 +58,36 @@
 	export default {
 		components: {
 			Card
+		},
+
+		data() {
+			return {
+				visible: false,
+				cart: [],
+				products: [
+					{
+						name: 'Kirkeveien',
+						price: 123	
+					},
+					{
+						name: 'Bygdøy ale',
+						price: 321
+					}
+				] 
+			}
+
+		},
+
+		methods: {
+			addToCart() {
+				console.log(this.products[1].name)
+			}
+		},
+
+		created() {
+			this.addToCart()
 		}
+
 	}
 </script>
 
@@ -51,8 +97,34 @@
 		padding-top: 20px;
 	}
 
-	.store__latest {
+	.store__cart {
+		width: 100vw;
+		height: 100vh;
+		background: var(--primary-color);
+		display: grid;
+		justify-content: center;
+		overflow: scroll;
+	}
+
+	.cart__product {
+		margin-top: 20px;
+	}
+
+	.cart__total {
+		border-top: solid 2px;
+		margin-top: 20px;
+		padding-top: 20px;
+		width: 306px;
 		display: flex;
+		justify-content: space-between;
+	}
+
+	.cart__total div {
+		font-size: 1.5rem;
+	}
+
+	.store__latest {
+		display: grid;
 		justify-content: center;
 	}
 

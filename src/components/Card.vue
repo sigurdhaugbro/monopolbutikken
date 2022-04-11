@@ -14,11 +14,44 @@
          <div class="card__amount">
             <input class="amount__input" type="number" placeholder="Amount">
          </div>
-         <button>Kjøp</button>
+         <button @click="addToCart">Kjøp</button>
       </div>
    </div>
 
 </template>
+
+<script>
+   export default {
+
+      data() {
+			return {
+            index: 0,
+				cart: [],
+				products: [
+					{
+						name: 'Kirkeveien',
+						price: 123,
+                  color: 'red'
+					},
+					{
+						name: 'Bygdøy ale',
+						price: 321,
+                  color: 'orange',
+					}
+				] 
+			}
+		},
+
+		methods: {
+			addToCart() {
+            this.cart.push(this.products[this.index])
+            console.log(this.cart)
+			}
+		},
+   }
+
+</script>
+
 
 <style> 
 
@@ -29,6 +62,7 @@
       padding: 13px;
       display: grid;
       justify-content: center;
+      background: white;
    }
 
    .card__border {
