@@ -7,16 +7,28 @@
          <RouterLink class="header__link" :to="{ name: 'home' }">Home</RouterLink>
          <RouterLink class="header__link" :to="{ name: 'store' }">Store</RouterLink>
          <RouterLink class="header__link" :to="{ name: 'about' }">About</RouterLink>
-         <button class="header__link">cart</button>
+         <button class="header__link" @click="visible ^= true">cart</button>
+         <div v-if="visible">hei</div>
       </section>
    </header>
 </template>
+
+<script>
+   export default {
+      computed: {
+			visible() {
+				return this.$store.getters.getVisible;
+			}
+		},
+   }
+</script>
+
 
 <style scoped>
    .header {
       position: relative;
       background: var(--primary-color);
-      height: 7%;
+      height: 70px;
       display: flex;
       /* justify-content: space-between; */
       padding: 2%
