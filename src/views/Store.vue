@@ -19,7 +19,7 @@
 						<li class="list__element">Med Hotel 2450kr</li>
 					</ul>
 					<div class="card__price">{{ product.price }}</div>
-					<button @click="removeProductFromCart(product)">Remove from cart</button>
+					<button @click="removeItem(index)">Remove from cart</button>
 				</div>
 			</div>
 			<div v-for="product in cart" :key="product.id">
@@ -53,7 +53,8 @@
 		data() {
 			return {
 				visible: true,
-				color: 'blue'
+				color: 'blue',
+				sum: 0
 			}
 		},
 
@@ -80,6 +81,10 @@
 				this.$store.commit('addToCart', product)
 				this.setColor()
 			},
+
+			removeItem(itemIndex) {
+				this.$store.commit('removeItem', itemIndex)
+			}
 		},
 	}
 </script>
@@ -96,6 +101,12 @@
 		width: 100vw;
 		overflow: scroll;
 		background: white;
+	}
+
+	@media screen and (min-width: 1000px) {
+		.cart {
+			width: 346px;
+		}
 	}
 
 	.headline {
