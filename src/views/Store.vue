@@ -3,11 +3,10 @@
 	<!-- 
 		dette mangler: 
 			skjule/vise cart,
-			removeFromCart(),
 			sanity!!!,
 			color
 	 -->
-		<section class="cart">
+		<section v-if="visible" class="cart">
 			<div class="card" v-for="product in cart" :key="product.id">
 				<div class="card__border">
 					<h2 class="card__header">{{ product.name }}</h2>
@@ -19,15 +18,15 @@
 						<li class="list__element">Med Hotel 2450kr</li>
 					</ul>
 					<div class="card__price">{{ product.price }}</div>
-					<button @click="removeItem(index)">Remove from cart</button>
 				</div>
 			</div>
-			<div v-for="product in cart" :key="product.id">
-				<div>{{ product.price }}</div>
-			</div>
+			<button @click="removeAll()">Remove All</button>
 		</section>
-
-		<h1 class="headline" >Velg dine kort:</h1>
+		<section class="header-section">
+			<h1 class="headline" >Velg dine kort:</h1>
+			<button class="header-section__cart-button" @click="visible ^= true">cart</button>
+		</section>
+		
 		<section class="store">
 			<div class="card" v-for="product in products" :key="product.id">
 				<div class="card__border">
@@ -52,9 +51,10 @@
 		
 		data() {
 			return {
-				visible: true,
-				color: 'blue',
-				sum: 0
+				visible: false,
+				color: '#E39F38',
+				sum: 0,
+				cart: []
 			}
 		},
 
@@ -67,13 +67,13 @@
 				return this.$store.getters.getCart;
 			},
 
-			visible() {
-				return this.$store.getters.getVisible;
-			},
+			// visible() {
+			// 	return this.$store.getters.getVisible;
+			// },
 
-			setColor() {
-				this.color = 'pink'
-			}		
+			// setColor() {
+			// 	this.color = 'pink'
+			// }		
 		},
 
 		methods: {
@@ -82,8 +82,10 @@
 				this.setColor()
 			},
 
-			removeItem(itemIndex) {
-				this.$store.commit('removeItem', itemIndex)
+			removeAll() {
+				/* this.cart = [] */
+				this.$store.dispatch('removeAll');
+				console.log('remove all')
 			}
 		},
 	}
@@ -93,6 +95,7 @@
 
 	.cart {
 		position: absolute;
+		padding-top: 60px;
 		right: 0px;
 		z-index: 1;
 		display: grid;
@@ -107,6 +110,21 @@
 		.cart {
 			width: 346px;
 		}
+	}
+
+	.header-section {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.header-section__cart-button {
+		width: 150px;
+		margin: 10px;
+		font-size: 1.5em;
+		text-decoration: underline;
+		background: white;
+		z-index: 1;
+		border: solid 2px;
 	}
 
 	.headline {
@@ -151,7 +169,7 @@
       width: 210px;
       height: 80px;
       margin-top: 13px;
-      /* background: #E39F38; */
+      background: #E39F38;
    }
 
    .list__element {

@@ -1,8 +1,8 @@
 export default {
 	state() {
 		return {
-			visible: true,
-			cart: [{ id: '001', name: 'Kirkeveien',     price: 123, color: '', }, { id: '001', name: 'Kirkeveien',     price: 123, color: '', }, { id: '001', name: 'Kirkeveien',     price: 123, color: '', }],
+			// visible: false,
+			cart: [],
 			products: [
 				{ id: '001', name: 'Kirkeveien',     price: 123, color: 'red', },
 				{ id: '002', name: 'Bygdøy ale',     price: 341, color: 'green', },
@@ -35,9 +35,17 @@ export default {
 			state.cart.push(product);
 		},
 
-		removeItem(state, itemIndex) {
-			state.shop.cart.splice(itemIndex, 1);
-		}
+		removeAll(state) {
+			state.cart = []
+			console.log(state.cart, ' se her')
+		},
 
+	},
+
+	actions: {
+		removeAll({ commit }) {
+			commit('removeAll');
+		}
 	}
+
 };

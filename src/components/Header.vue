@@ -1,28 +1,14 @@
 <template>
    <header class="header">
-      <RouterLink class="header__logo" :to="{ name: 'home' }">
-         
-      </RouterLink>
+      <RouterLink class="header__logo" :to="{ name: 'home' }"></RouterLink>
       <section class="header__links">
          <RouterLink class="header__link" :to="{ name: 'home' }">Home</RouterLink>
          <RouterLink class="header__link" :to="{ name: 'store' }">Store</RouterLink>
          <RouterLink class="header__link" :to="{ name: 'about' }">About</RouterLink>
-         <button class="header__link" @click="visible ^= true">cart</button>
-         <div v-if="visible">hei</div>
+         <!-- <button class="header__link" @click="visible ^= true">cart</button> -->
       </section>
    </header>
 </template>
-
-<script>
-   export default {
-      computed: {
-			visible() {
-				return this.$store.getters.getVisible;
-			}
-		},
-   }
-</script>
-
 
 <style scoped>
    .header {
@@ -30,7 +16,6 @@
       background: var(--primary-color);
       height: 70px;
       display: flex;
-      /* justify-content: space-between; */
       padding: 2%
    }
 
@@ -59,7 +44,6 @@
    @media screen and (min-width: 1000px) {
       .header {
          position: relative;
-         background: blue;
          height: 90px;
          display: flex;
          justify-content: space-between;
