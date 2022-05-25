@@ -1,0 +1,6 @@
+*[_type == 'card'] {
+   name,
+   price,
+   color,
+   id
+}

@@ -6,6 +6,21 @@
    </section>
 </template>
 
+<script>
+
+   import query from '../groq/card.groq?raw'
+	import viewMixins from '../mixins/viewMixin.js'
+
+   export default {
+      mixins: [viewMixins],
+      async created() {
+         this.sanityFetch(query)
+      }
+
+   }
+
+</script>
+
 <style scoped>
    .home {
       display: grid;

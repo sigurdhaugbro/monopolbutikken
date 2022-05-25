@@ -43,18 +43,27 @@
 				</div>
 			</div>
 		</section>
-
+		<div>{{card}}</div>
 </template>
 
 <script>
+
+	import query from '../groq/card.groq?raw'
+	import viewMixins from '../mixins/viewMixin.js'
+
 	export default {
+      mixins: [viewMixins],
+      async created() {
+         this.sanityFetch(query)
+      }, 
 		
 		data() {
 			return {
 				visible: false,
 				color: '#E39F38',
 				sum: 0,
-				cart: []
+				cart: [],
+				card: 'jwAEFAWFAWEFAWRF'
 			}
 		},
 
@@ -65,15 +74,8 @@
 
 			cart() {
 				return this.$store.getters.getCart;
+
 			},
-
-			// visible() {
-			// 	return this.$store.getters.getVisible;
-			// },
-
-			// setColor() {
-			// 	this.color = 'pink'
-			// }		
 		},
 
 		methods: {
@@ -86,7 +88,9 @@
 				/* this.cart = [] */
 				this.$store.dispatch('removeAll');
 				console.log('remove all')
-			}
+			},
+
+			
 		},
 	}
 </script>

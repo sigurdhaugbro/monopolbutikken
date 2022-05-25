@@ -1,4 +1,13 @@
+import query from '../src/groq/card.groq?raw'
+import viewMixins from '../src/mixins/viewMixin.js'
+
 export default {
+
+	mixins: [viewMixins],
+	async created() {
+		this.sanityFetch(query)
+	}, 
+
 	state() {
 		return {
 			// visible: false,
@@ -13,6 +22,12 @@ export default {
 				{ id: '007', name: 'Stortings gata', price: 121, color: 'pink', }
 			], 
 		};
+	},
+// ??????????????????????????????????
+	methods: {
+		getCards() {
+			this.products += this.content
+		}
 	},
 
 	getters: {
