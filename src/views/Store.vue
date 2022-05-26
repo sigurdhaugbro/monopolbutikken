@@ -21,6 +21,7 @@
 				</div>
 			</div>
 			<button @click="removeAll()">Remove All</button>
+			<button @click="removeAll()">Purchase</button>
 		</section>
 		<section class="header-section">
 			<h1 class="headline" >Velg dine kort:</h1>
@@ -54,7 +55,8 @@
 	export default {
       mixins: [viewMixins],
       async created() {
-         this.sanityFetch(query)
+        await this.sanityFetch(query)
+			this.$store.dispatch('updateProducts', this.content);
       }, 
 		
 		data() {
