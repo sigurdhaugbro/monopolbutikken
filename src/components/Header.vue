@@ -49,7 +49,6 @@
          justify-content: space-between;
 
       }
-
       .header__links {
          display: flex;
          justify-content: space-between;
