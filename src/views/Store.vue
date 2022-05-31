@@ -1,11 +1,4 @@
    <template>
-
-	<!-- 
-		dette mangler: 
-			skjule/vise cart,
-			sanity!!!,
-			color
-	 -->
 		<section v-if="visible" class="cart">
 			<div class="card" v-for="product in cart" :key="product.id">
 				<div class="card__border">
@@ -31,7 +24,7 @@
 		<section class="store">
 			<div class="card" v-for="product in products" :key="product.id">
 				<div class="card__border">
-					<h2 v-bind:style="{'background-color': color }" class="card__header">{{ product.name }}</h2>
+					<h2 v-bind:style="{ 'background-color': color }" class="card__header">{{ product.name }}</h2>
 					<ul class="card__list">
 						<li class="list__element">Med 1 hus 145kr</li>
 						<li class="list__element">Med 2 hus 145kr</li>
@@ -44,7 +37,7 @@
 				</div>
 			</div>
 		</section>
-		<div>{{card}}</div>
+		<div>{{ card }}</div>
 </template>
 
 <script>
@@ -65,7 +58,7 @@
 				color: '#E39F38',
 				sum: 0,
 				cart: [],
-				card: 'jwAEFAWFAWEFAWRF'
+				card: ''
 			}
 		},
 
@@ -76,7 +69,6 @@
 
 			cart() {
 				return this.$store.getters.getCart;
-
 			},
 		},
 
@@ -87,7 +79,6 @@
 			},
 
 			removeAll() {
-				/* this.cart = [] */
 				this.$store.dispatch('removeAll');
 				console.log('remove all')
 			},
