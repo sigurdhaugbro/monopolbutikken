@@ -6,13 +6,11 @@
 
 <script>
 	import Header from '../components/Header.vue';
-	import Card from '../components/Card.vue';
 	import Footer from '../components/Footer.vue'
 
 	export default {
 		components: {
 			Header,
-			Card,
 			Footer
 		}
 	}
